@@ -13,7 +13,6 @@
  */
 package com.facebook.presto.spark.classloader_interface;
 
-import com.google.common.collect.ImmutableMap;
 import org.apache.spark.broadcast.Broadcast;
 import scala.Tuple2;
 import scala.collection.Iterator;
@@ -38,9 +37,9 @@ public class PrestoSparkJavaExecutionTaskInputs
             Map<String, Broadcast<?>> broadcastInputs,
             Map<String, List<PrestoSparkSerializedPage>> inMemoryInputs)
     {
-        this.shuffleInputs = ImmutableMap.copyOf(requireNonNull(shuffleInputs, "shuffleInputs is null"));
-        this.broadcastInputs = ImmutableMap.copyOf(requireNonNull(broadcastInputs, "broadcastInputs is null"));
-        this.inMemoryInputs = ImmutableMap.copyOf(requireNonNull(inMemoryInputs, "inMemoryInputs is null"));
+        this.shuffleInputs = Map.copyOf(requireNonNull(shuffleInputs, "shuffleInputs is null"));
+        this.broadcastInputs = Map.copyOf(requireNonNull(broadcastInputs, "broadcastInputs is null"));
+        this.inMemoryInputs = Map.copyOf(requireNonNull(inMemoryInputs, "inMemoryInputs is null"));
     }
 
     public Map<String, Iterator<Tuple2<MutablePartitionId, PrestoSparkMutableRow>>> getShuffleInputs()

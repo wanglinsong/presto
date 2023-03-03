@@ -14,8 +14,6 @@
 package com.facebook.presto.testing.containers;
 
 import com.facebook.airlift.log.Logger;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
 import com.google.common.net.HostAndPort;
 import net.jodah.failsafe.Failsafe;
 import net.jodah.failsafe.RetryPolicy;
@@ -139,9 +137,9 @@ public abstract class BaseTestContainer
     {
         protected String image;
         protected String hostName;
-        protected Set<Integer> exposePorts = ImmutableSet.of();
-        protected Map<String, String> filesToMount = ImmutableMap.of();
-        protected Map<String, String> envVars = ImmutableMap.of();
+        protected Set<Integer> exposePorts = Set.of();
+        protected Map<String, String> filesToMount = Map.of();
+        protected Map<String, String> envVars = Map.of();
         protected Optional<Network> network = Optional.empty();
         protected int startupRetryLimit = 1;
 

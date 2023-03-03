@@ -14,8 +14,6 @@
 package com.facebook.presto.testing.containers;
 
 import com.facebook.airlift.log.Logger;
-import com.google.common.collect.ImmutableMap;
-import com.google.common.collect.ImmutableSet;
 import org.testcontainers.containers.Network;
 
 import java.util.Map;
@@ -62,8 +60,8 @@ public class NessieContainer
         {
             this.image = DEFAULT_IMAGE;
             this.hostName = DEFAULT_HOST_NAME;
-            this.exposePorts = ImmutableSet.of(PORT);
-            this.envVars = ImmutableMap.of("QUARKUS_HTTP_PORT", String.valueOf(PORT), "NESSIE_VERSION_STORE_TYPE", VERSION_STORE_TYPE);
+            this.exposePorts = Set.of(PORT);
+            this.envVars = Map.of("QUARKUS_HTTP_PORT", String.valueOf(PORT), "NESSIE_VERSION_STORE_TYPE", VERSION_STORE_TYPE);
         }
 
         @Override

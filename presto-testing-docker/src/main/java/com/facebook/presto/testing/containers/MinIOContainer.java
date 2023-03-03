@@ -14,11 +14,10 @@
 package com.facebook.presto.testing.containers;
 
 import com.facebook.airlift.log.Logger;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
 import com.google.common.net.HostAndPort;
 import org.testcontainers.containers.Network;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
@@ -64,12 +63,11 @@ public class MinIOContainer
     protected void setupContainer()
     {
         super.setupContainer();
-        withRunCommand(
-                ImmutableList.of(
-                        "server",
-                        "--address", "0.0.0.0:" + MINIO_API_PORT,
-                        "--console-address", "0.0.0.0:" + MINIO_CONSOLE_PORT,
-                        "/data"));
+        withRunCommand(List.of(
+                "server",
+                "--address", "0.0.0.0:" + MINIO_API_PORT,
+                "--console-address", "0.0.0.0:" + MINIO_CONSOLE_PORT,
+                "/data"));
     }
 
     @Override
@@ -99,8 +97,7 @@ public class MinIOContainer
         {
             this.image = DEFAULT_IMAGE;
             this.hostName = DEFAULT_HOST_NAME;
-            this.exposePorts =
-                    ImmutableSet.of(
+            this.exposePorts = Set.of(
                             MINIO_API_PORT,
                             MINIO_CONSOLE_PORT);
         }

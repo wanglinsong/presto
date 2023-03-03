@@ -14,7 +14,6 @@
 package com.facebook.presto.testng.services;
 
 import com.facebook.airlift.log.Logger;
-import com.google.common.collect.ImmutableMap;
 import io.airlift.units.Duration;
 import org.testng.IClassListener;
 import org.testng.IExecutionListener;
@@ -100,7 +99,7 @@ public class LogTestDurationListener
             return;
         }
 
-        Map<String, Long> runningTests = ImmutableMap.copyOf(started);
+        Map<String, Long> runningTests = Map.copyOf(started);
         if (!runningTests.isEmpty()) {
             String testDetails = runningTests.entrySet().stream()
                     .map(entry -> format("%s running for %s", entry.getKey(), nanosSince(entry.getValue())))

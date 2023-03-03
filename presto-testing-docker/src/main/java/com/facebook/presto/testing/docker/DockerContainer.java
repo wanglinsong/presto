@@ -14,8 +14,6 @@
 package com.facebook.presto.testing.docker;
 
 import com.facebook.airlift.log.Logger;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableMap;
 import com.spotify.docker.client.DefaultDockerClient;
 import com.spotify.docker.client.DockerClient;
 import com.spotify.docker.client.exceptions.ContainerNotFoundException;
@@ -66,7 +64,7 @@ public final class DockerContainer
     public DockerContainer(String image, List<Integer> ports, Map<String, String> environment, CheckedConsumer<HostPortProvider> healthCheck)
     {
         this.image = requireNonNull(image, "image is null");
-        this.environment = ImmutableMap.copyOf(requireNonNull(environment, "environment is null"));
+        this.environment = Map.copyOf(requireNonNull(environment, "environment is null"));
         try {
             startContainer(ports, healthCheck);
         }
@@ -128,7 +126,7 @@ public final class DockerContainer
         LOG.info("Starting docker container from image %s", image);
 
         Map<String, List<PortBinding>> portBindings = ports.stream()
-                .collect(toImmutableMap(Object::toString, port -> ImmutableList.of(PortBinding.create(HOST_IP, "0"))));
+                .collect(toImmutableMap(Object::toString, port -> List.of(PortBinding.create(HOST_IP, "0"))));
         Set<String> exposedPorts = ports.stream()
                 .map(Object::toString)
                 .collect(toImmutableSet());
