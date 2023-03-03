@@ -37,6 +37,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
+        <project.build.targetJdk>11</project.build.targetJdk>
 
         <air.main.basedir>${project.basedir}</air.main.basedir>
 
